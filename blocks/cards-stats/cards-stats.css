@@ -2,6 +2,7 @@
    with label + date/link beneath on the page background. No images. */
 
 .cards-stats {
+  margin: 40px 0;
   color: var(--brand-blue);
 }
 
