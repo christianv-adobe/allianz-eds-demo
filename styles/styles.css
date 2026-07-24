@@ -364,3 +364,10 @@ main .section > .content-band::before {
   transform: translateX(-50%);
   background: var(--light-color);
 }
+
+/* when the banded intro is itself a columns-feature block (e.g. the Careers
+   heading + intro), drop its block margin so the band joins the feature row
+   below with no white gap */
+main .section > .content-band .columns-feature {
+  margin: 0;
+}

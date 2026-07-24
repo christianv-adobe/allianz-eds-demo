@@ -66,30 +66,34 @@ export default function decorate(block) {
     });
   }
 
-  // 2-column feature rows sit on a light-blue band. If a lone heading (e.g.
-  // "Insights & Specials") directly precedes the FIRST such row, pull it onto
-  // the same band. The heading may share its wrapper with a preceding pill row,
-  // which is split off into its own white wrapper so only the heading is banded.
+  // 2-column feature rows sit on a light-blue band. Pull the intro that
+  // precedes the FIRST such row onto the same band so the heading + intro share
+  // the band (matches "Insights & Specials" and "Careers at Allianz Group").
+  // The intro is either a default-content heading wrapper or a single-column
+  // columns-feature block (heading + paragraph). A pill row sharing the heading
+  // wrapper is split off into its own white wrapper so only the heading bands.
   if (cols.length === 2) {
     const wrapper = block.closest('.columns-feature-wrapper');
     const prev = wrapper && wrapper.previousElementSibling;
-    const alreadyBanded = prev && prev.previousElementSibling
-      && prev.previousElementSibling.classList.contains('content-band');
-    if (
-      prev
-      && prev.classList.contains('default-content-wrapper')
-      && !prev.classList.contains('content-band')
-      && !alreadyBanded
-    ) {
-      const heading = prev.querySelector(':scope > h2, :scope > h3');
-      const kids = [...prev.children];
-      const pills = prev.querySelector(':scope > .link-group');
+    const prevIsIntro = prev
+      && (prev.classList.contains('default-content-wrapper')
+        || prev.querySelector('.columns-feature-1-cols'));
+    // avoid double-banding when the band was already extended upward
+    const prevPrev = prev && prev.previousElementSibling;
+    const alreadyBanded = prevPrev && prevPrev.classList.contains('content-band');
+    if (prev && prevIsIntro && !prev.classList.contains('content-band') && !alreadyBanded) {
+      const heading = prev.querySelector('h2, h3');
       if (heading) {
-        if (pills && kids.indexOf(pills) < kids.indexOf(heading)) {
-          const pillsWrapper = document.createElement('div');
-          pillsWrapper.className = 'default-content-wrapper';
-          prev.before(pillsWrapper);
-          pillsWrapper.append(pills);
+        const dcw = prev.classList.contains('default-content-wrapper') ? prev : null;
+        if (dcw) {
+          const kids = [...dcw.children];
+          const pills = dcw.querySelector(':scope > .link-group');
+          if (pills && kids.indexOf(pills) < kids.indexOf(heading)) {
+            const pillsWrapper = document.createElement('div');
+            pillsWrapper.className = 'default-content-wrapper';
+            dcw.before(pillsWrapper);
+            pillsWrapper.append(pills);
+          }
         }
         prev.classList.add('content-band');
       }
