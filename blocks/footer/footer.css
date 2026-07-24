@@ -1,20 +1,149 @@
+/* Allianz footer — migrated design
+   Band 1: 4 link columns on light-blue. Band 2: social icons (white).
+   Band 3: copyright + legal links (white, top border). */
+
+/* stylelint-disable no-descending-specificity */
+
 footer {
-  background-color: var(--light-color);
+  background-color: var(--background-color);
+  font-family: var(--body-font-family);
   font-size: var(--body-font-size-xs);
 }
 
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
-}
-
-footer .footer p {
+footer .footer ul {
+  list-style: none;
   margin: 0;
+  padding: 0;
 }
 
+footer .footer a {
+  color: var(--brand-blue);
+  text-decoration: none;
+}
+
+footer .footer a:hover {
+  color: var(--brand-blue-dark);
+  text-decoration: underline;
+}
+
+/* ---------- Band 1: link columns (light-blue) ---------- */
+footer .footer-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 40px 24px;
+  background-color: var(--light-color);
+}
+
+footer .footer-columns > div h2 {
+  margin: 0 0 16px;
+  color: var(--brand-blue);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+footer .footer-columns > div li {
+  margin: 0 0 12px;
+}
+
+footer .footer-columns > div a {
+  font-size: 15px;
+}
+
+/* ---------- Band 2: social ---------- */
+footer .footer-social {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+footer .footer-social h2 {
+  margin: 0 0 28px;
+  color: var(--brand-blue);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+footer .footer-social ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+footer .footer-social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--brand-blue);
+}
+
+footer .footer-social-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+footer .footer-social-icon:hover {
+  color: var(--brand-blue-dark);
+}
+
+/* ---------- Band 3: legal ---------- */
+footer .footer-legal {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 20px 24px;
+  border-top: 1px solid #e6ebf2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+footer .footer-legal p {
+  margin: 0;
+  color: var(--brand-blue);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+footer .footer-legal ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+footer .footer-legal a {
+  font-size: 14px;
+}
+
+/* ============ Tablet (>= 600px) ============ */
+@media (width >= 600px) {
+  footer .footer-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============ Desktop (>= 900px) ============ */
 @media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+  footer .footer-columns {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding: 48px 32px;
+  }
+
+  footer .footer-social {
+    padding: 48px 32px;
+  }
+
+  footer .footer-legal {
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    padding: 24px 32px;
   }
 }

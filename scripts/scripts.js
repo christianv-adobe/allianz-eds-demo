@@ -10,6 +10,8 @@ import {
   loadSections,
   loadCSS,
   buildBlock,
+  readBlockConfig,
+  toClassName,
 } from './aem.js';
 
 if (window.trustedTypes && window.trustedTypes.createPolicy) {
@@ -143,6 +145,71 @@ function decorateButtons(main) {
 }
 
 /**
+ * Applies `section-metadata` blocks to their parent section as classes / data
+ * attributes, then removes the block. This repo's reduced aem.js does not process
+ * section metadata, so it is handled here (mirrors the standard EDS boilerplate).
+ * @param {Element} main The main container element
+ */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll(':scope > .section').forEach((section) => {
+    const sectionMeta = section.querySelector('div.section-metadata');
+    if (!sectionMeta) return;
+    const meta = readBlockConfig(sectionMeta);
+    Object.keys(meta).forEach((key) => {
+      if (key === 'style') {
+        const styles = meta.style.split(',').map((style) => toClassName(style.trim())).filter((s) => s);
+        styles.forEach((style) => section.classList.add(style));
+      } else {
+        section.dataset[toClassName(key).replace(/-([a-z])/g, (_, g) => g.toUpperCase())] = meta[key];
+      }
+    });
+    // remove the wrapper that holds the section-metadata block
+    (sectionMeta.parentNode.children.length === 1 ? sectionMeta.parentNode : sectionMeta).remove();
+  });
+}
+
+/**
+ * Turns a run of 3+ consecutive standalone-link paragraphs in default content
+ * into a centered pill-button group (matches sources that auto-decorate
+ * consecutive links into buttons, e.g. the topic-pill row).
+ * @param {HTMLElement} main The main container element
+ */
+function decorateLinkGroups(main) {
+  const isLinkOnlyP = (el) => el
+    && el.tagName === 'P'
+    && el.children.length === 1
+    && el.firstElementChild.tagName === 'A'
+    && el.textContent.trim() === el.firstElementChild.textContent.trim();
+
+  main.querySelectorAll('.default-content-wrapper').forEach((wrapper) => {
+    const children = [...wrapper.children];
+    let i = 0;
+    while (i < children.length) {
+      if (isLinkOnlyP(children[i])) {
+        let j = i;
+        while (j < children.length && isLinkOnlyP(children[j])) j += 1;
+        const run = children.slice(i, j);
+        if (run.length >= 3) {
+          const group = document.createElement('div');
+          group.className = 'link-group';
+          run[0].before(group);
+          run.forEach((p) => {
+            const a = p.firstElementChild;
+            a.classList.add('button', 'secondary');
+            a.title = a.title || a.textContent;
+            group.append(a);
+            p.remove();
+          });
+        }
+        i = j;
+      } else {
+        i += 1;
+      }
+    }
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -151,8 +218,10 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionMetadata(main);
   decorateBlocks(main);
   decorateButtons(main);
+  decorateLinkGroups(main);
 }
 
 /**

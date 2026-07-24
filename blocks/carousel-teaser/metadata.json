@@ -1,0 +1,39 @@
+{
+  "variantName": "carousel-teaser",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-07-23T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.allianz.com/en.html",
+    "originPage": "Allianz corporate homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "teaser-carousel",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + title + date + description per slide, rotating with prev/next + bullets",
+    "buttonCount": 0,
+    "imageCount": 8,
+    "slides": 8
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "news/insight teaser carousels",
+      "rotating promotional highlights with image + title + description",
+      "homepage or landing pages showcasing multiple linked stories"
+    ],
+    "notSuitableFor": [
+      "single featured item (no rotation needed)",
+      "content that must all be visible at once"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-23T00:00:00.000Z"
+  }
+}

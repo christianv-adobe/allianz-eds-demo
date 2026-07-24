@@ -1,0 +1,146 @@
+/* Block: columns-feature
+ * Two shapes share this variant:
+ *  - 3-column promo row: light info panel + dark navy panel + embedded chart
+ *  - 2-column image + text feature rows (image side follows authored order)
+ * Mobile-first: everything stacks to a single column below 900px.
+ */
+
+/* ---------- base (mobile: stacked) ---------- */
+.columns-feature > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.columns-feature img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* headings — Allianz blue, from extracted computed styles (26px / 600) */
+.columns-feature :is(h2, h3) {
+  margin: 0 0 12px;
+  color: var(--heading-color);
+  font-family: var(--heading-font-family);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.columns-feature p {
+  margin: 0 0 12px;
+}
+
+.columns-feature p:last-child {
+  margin-bottom: 0;
+}
+
+/* arrow links — blue, bold (extracted: rgb(0,55,129) / 600 / no underline) */
+.columns-feature a:any-link {
+  color: var(--link-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.columns-feature a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+/* prefix standalone links with the source's arrow glyph */
+.columns-feature p > a:only-child::before {
+  content: "\2192";
+  margin-right: 0.5em;
+  font-weight: 600;
+}
+
+/* tighten consecutive link rows (e.g. "More" + "Results") */
+.columns-feature p:has(> a:only-child) {
+  margin: 6px 0 0;
+}
+
+/* ---------- 3-column promo panels ---------- */
+.columns-feature-panel {
+  padding: 40px 32px;
+}
+
+.columns-feature-panel :is(h2, h3) {
+  margin-bottom: 24px;
+}
+
+.columns-feature-panel-light {
+  background-color: var(--light-color);
+  color: var(--brand-blue);
+}
+
+.columns-feature-panel-light :is(h2, h3),
+.columns-feature-panel-light a:any-link {
+  color: var(--brand-blue);
+}
+
+.columns-feature-panel-dark {
+  background-color: var(--brand-blue);
+  color: #fff;
+}
+
+.columns-feature-panel-dark :is(h2, h3) {
+  color: #fff;
+}
+
+/* dark-panel CTA renders as a white pill button, not an arrow link */
+.columns-feature-panel-dark p > a:only-child {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 0.55em 1.6em;
+  border-radius: 2.4em;
+  background-color: #fff;
+  color: var(--brand-blue);
+  font-weight: 600;
+}
+
+.columns-feature-panel-dark p > a:only-child::before {
+  content: none;
+}
+
+.columns-feature-panel-dark p > a:only-child:hover {
+  background-color: var(--light-color);
+  color: var(--brand-blue);
+  text-decoration: none;
+}
+
+/* ---------- embedded chart / URL column ---------- */
+.columns-feature-embed {
+  min-width: 0;
+}
+
+.columns-feature-embed iframe {
+  display: block;
+  width: 100%;
+  height: 360px;
+  border: 0;
+}
+
+/* ---------- desktop layout ---------- */
+@media (width >= 900px) {
+  .columns-feature > div {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  /* image + text feature rows: vertically centre the pair */
+  .columns-feature-2-cols > div {
+    align-items: center;
+  }
+
+  .columns-feature > div > div {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* keep the embed from stretching to the panels' full height */
+  .columns-feature-embed {
+    align-self: flex-start;
+  }
+}

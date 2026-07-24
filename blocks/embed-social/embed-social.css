@@ -1,0 +1,118 @@
+/*
+ * Block: embed-social
+ * Embeds a third-party social feed (Flockler) or a single video/social post.
+ * The section wrapper already centers content within --content-max-width, so the
+ * block fills the available width and lets the feed grid stay responsive.
+ */
+
+.embed-social {
+  width: 100%;
+  margin: 32px 0;
+}
+
+/* Flockler social feed container: let the injected grid size itself. */
+.embed-social .embed-social-feed {
+  width: 100%;
+}
+
+/* Graceful fallback shown until the feed script renders visible content. */
+.embed-social .embed-social-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 32px 24px;
+  border-radius: 8px;
+  background-color: var(--light-color);
+  text-align: center;
+}
+
+.embed-social .embed-social-fallback p {
+  margin: 0;
+  color: var(--brand-blue);
+  font-family: var(--heading-font-family);
+  font-weight: 600;
+  font-size: var(--body-font-size-m);
+}
+
+.embed-social .embed-social-fallback a:any-link {
+  color: var(--brand-blue);
+  text-decoration: underline;
+}
+
+/* Once the real feed has rendered, drop the loading panel. */
+.embed-social.embed-social-has-feed .embed-social-fallback {
+  display: none;
+}
+
+@media (width >= 900px) {
+  .embed-social {
+    margin: 48px 0;
+  }
+
+  .embed-social .embed-social-fallback {
+    min-height: 240px;
+  }
+}
+
+/* --- Single video / social post variant (image placeholder + play button) --- */
+
+.embed-social.embed-social-twitter,
+.embed-social.embed-social-youtube,
+.embed-social.embed-social-vimeo {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.embed-social.embed-social-twitter .twitter-tweet-rendered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.embed-social .embed-social-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+}
+
+.embed-social .embed-social-placeholder > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+}
+
+.embed-social .embed-social-placeholder picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.embed-social .embed-social-placeholder-play button {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(3);
+  width: 22px;
+  height: 22px;
+  border: 2px solid;
+  border-radius: 20px;
+  padding: 0;
+}
+
+.embed-social .embed-social-placeholder-play button::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 0;
+  height: 10px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 6px solid;
+  top: 4px;
+  left: 7px;
+}

@@ -1,0 +1,38 @@
+{
+  "variantName": "embed-social",
+  "baseBlock": "embed",
+  "version": "1.0.0",
+  "created": "2026-07-23T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.allianz.com/en.html",
+    "originPage": "Allianz corporate homepage",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "social-feed",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "single cell with a URL to a third-party social feed (Flockler grid of Instagram/LinkedIn posts)",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "embedding a social media feed (Flockler, Instagram, LinkedIn)",
+      "'stay up to date' / social wall sections",
+      "third-party interactive media loaded via URL"
+    ],
+    "notSuitableFor": [
+      "plain text or image content",
+      "content requiring bespoke styling of the third-party media"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-23T00:00:00.000Z"
+  }
+}

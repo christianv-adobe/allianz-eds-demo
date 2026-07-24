@@ -1,0 +1,38 @@
+{
+  "variantName": "hero-stage",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-07-23T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.allianz.com/en.html",
+    "originPage": "Allianz corporate homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "background image + heading + CTA",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "homepage top stage banner",
+      "campaign landing pages with a full-bleed background photo",
+      "pages needing an overlaid headline + single CTA on an image"
+    ],
+    "notSuitableFor": [
+      "text-only intros without a background image",
+      "sections requiring multiple stacked content blocks below the banner"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-23T00:00:00.000Z"
+  }
+}

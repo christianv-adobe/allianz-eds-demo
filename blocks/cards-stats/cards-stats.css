@@ -1,0 +1,81 @@
+/* cards-stats — row of statistic cards: big value in a tinted rounded panel,
+   with label + date/link beneath on the page background. No images. */
+
+.cards-stats {
+  color: var(--brand-blue);
+}
+
+.cards-stats > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (width >= 600px) {
+  .cards-stats > ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 20px;
+  }
+}
+
+@media (width >= 900px) {
+  .cards-stats > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.cards-stats > ul > li {
+  display: flex;
+}
+
+.cards-stats .cards-stats-card-body {
+  flex: 1;
+  text-align: center;
+}
+
+/* big value: the tinted rounded panel holding ONLY the number */
+.cards-stats .cards-stats-card-body h3 {
+  margin: 0 0 18px;
+  padding: 44px 16px;
+  border-radius: 4px;
+  background-color: var(--light-color);
+  color: var(--brand-blue);
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+/* label + date paragraphs sit beneath the panel on the page background */
+.cards-stats .cards-stats-card-body p {
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* label (first paragraph, always wraps a <strong>) */
+.cards-stats .cards-stats-card-body p:first-of-type strong {
+  color: var(--brand-blue);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* date / "See ..." line (last paragraph) — smaller and lighter */
+.cards-stats .cards-stats-card-body p:last-of-type {
+  margin-top: 12px;
+  color: #54698c;
+  font-size: 12px;
+}
+
+.cards-stats .cards-stats-card-body a {
+  color: var(--brand-blue);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cards-stats .cards-stats-card-body a:hover {
+  text-decoration: underline;
+}

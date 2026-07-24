@@ -1,0 +1,197 @@
+/* carousel-teaser — 3-up white teaser cards on an Allianz light-blue band */
+
+/*
+ * Full-bleed light-blue band. Overrides the shared `.section > div` max-width
+ * (EDS full-width pattern) so the band spans the viewport; the carousel content
+ * is re-constrained to the content column below.
+ */
+main > .section > .carousel-teaser-wrapper {
+  max-width: none;
+  margin: 0;
+  padding: 40px 0;
+  background-color: var(--light-color);
+}
+
+.carousel-teaser {
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding-inline: 16px;
+  color: var(--brand-blue);
+}
+
+.carousel-teaser .carousel-teaser-slides-container {
+  position: relative;
+}
+
+/* Track of cards — horizontal scroll with snap */
+.carousel-teaser .carousel-teaser-slides {
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: scroll clip;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-teaser .carousel-teaser-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card */
+.carousel-teaser .carousel-teaser-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: var(--background-color);
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+/* Card image — full width, consistent aspect ratio (~16:9 per design) */
+.carousel-teaser .carousel-teaser-slide-image {
+  margin: 0;
+}
+
+.carousel-teaser .carousel-teaser-slide-image picture {
+  display: block;
+  aspect-ratio: 16 / 9;
+}
+
+.carousel-teaser .carousel-teaser-slide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Card body */
+.carousel-teaser .carousel-teaser-slide-content {
+  flex: 1 1 auto;
+  padding: 20px 20px 28px;
+}
+
+.carousel-teaser .carousel-teaser-slide-content h2 {
+  margin: 0 0 10px;
+  font-family: var(--heading-font-family);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: normal;
+  color: var(--brand-blue);
+}
+
+.carousel-teaser .carousel-teaser-slide-content h2 a:any-link {
+  color: var(--brand-blue);
+  text-decoration: none;
+}
+
+.carousel-teaser .carousel-teaser-slide-content h2 a:hover {
+  text-decoration: underline;
+}
+
+.carousel-teaser .carousel-teaser-slide-content p {
+  margin: 18px 0 0;
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--brand-blue);
+}
+
+/* Date line — first paragraph, tighter to the heading */
+.carousel-teaser .carousel-teaser-slide-content p:first-of-type {
+  margin-top: 6px;
+}
+
+/* Controls: prev arrow | dot pagination | next arrow, centered under the row */
+.carousel-teaser .carousel-teaser-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.carousel-teaser .carousel-teaser-controls .slide-prev,
+.carousel-teaser .carousel-teaser-controls .slide-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--brand-blue);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.carousel-teaser .carousel-teaser-controls .slide-prev::before {
+  content: '\2190'; /* ← */
+}
+
+.carousel-teaser .carousel-teaser-controls .slide-next::before {
+  content: '\2192'; /* → */
+}
+
+.carousel-teaser .carousel-teaser-controls .slide-prev:hover,
+.carousel-teaser .carousel-teaser-controls .slide-next:hover,
+.carousel-teaser .carousel-teaser-controls .slide-prev:focus-visible,
+.carousel-teaser .carousel-teaser-controls .slide-next:focus-visible {
+  color: var(--brand-blue-dark);
+}
+
+/* Dot pagination */
+.carousel-teaser .carousel-teaser-slide-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.carousel-teaser .carousel-teaser-slide-indicator button {
+  display: block;
+  width: 9px;
+  height: 9px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--brand-blue);
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.carousel-teaser .carousel-teaser-slide-indicator button:disabled,
+.carousel-teaser .carousel-teaser-slide-indicator button:hover,
+.carousel-teaser .carousel-teaser-slide-indicator button:focus-visible {
+  background-color: var(--brand-blue);
+  cursor: pointer;
+}
+
+/* Tablet: 2 cards per view */
+@media (width >= 600px) {
+  .carousel-teaser .carousel-teaser-slide {
+    flex-basis: calc((100% - 24px) / 2);
+  }
+}
+
+/* Desktop: 3 cards per view */
+@media (width >= 900px) {
+  .carousel-teaser {
+    padding-inline: 32px;
+  }
+
+  .carousel-teaser .carousel-teaser-slide {
+    flex-basis: calc((100% - 48px) / 3);
+  }
+}

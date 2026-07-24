@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-stats",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-07-23T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.allianz.com/en.html",
+    "originPage": "Allianz corporate homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "statistics",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "statistic value (heading) + bold label + as-of date per card",
+    "buttonCount": 0,
+    "imageCount": 0,
+    "items": 4
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "key figures / KPI rows",
+      "at-a-glance statistics with a value, label and date",
+      "text-only uniform card grids"
+    ],
+    "notSuitableFor": [
+      "cards that need images",
+      "long-form article teasers"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-23T00:00:00.000Z"
+  }
+}

@@ -1,0 +1,124 @@
+/* hero-stage — full-bleed background photo with left-overlaid white headline + white pill CTA */
+
+/* Break out of the 1400px section constraint so the photo spans full viewport width */
+.hero-stage-container .hero-stage-wrapper {
+  max-width: 100% !important;
+  padding: 0;
+}
+
+.hero-stage {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 340px;
+  padding: 32px 0 40px;
+  overflow: hidden;
+}
+
+.hero-stage picture {
+  display: block;
+  height: 100%;
+}
+
+.hero-stage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Row 1 (image cell) -> full-bleed background layer */
+.hero-stage > div:first-child {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Row 2 (content cell) -> overlaid text + CTA, aligned to the site content grid */
+.hero-stage > div:last-child {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero-stage > div:first-child > div {
+  height: 100%;
+  margin: 0;
+}
+
+.hero-stage > div:last-child > div {
+  max-width: 380px;
+}
+
+.hero-stage h1 {
+  margin: 0 0 32px;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 25%);
+}
+
+/* White pill CTA with Allianz-blue text (plain anchor, not EDS .button) */
+.hero-stage p {
+  margin: 0;
+}
+
+.hero-stage p a,
+.hero-stage p a:any-link {
+  display: inline-block;
+  background-color: #fff;
+  color: var(--brand-blue);
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 24px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.hero-stage p a:hover,
+.hero-stage p a:focus-visible {
+  background-color: var(--light-color);
+  color: var(--brand-blue-dark);
+  text-decoration: none;
+}
+
+/* Fallback when authored without an image */
+.hero-stage.no-image {
+  background-color: var(--brand-blue);
+}
+
+.hero-stage.no-image h1 {
+  text-shadow: none;
+}
+
+@media (width >= 900px) {
+  .hero-stage {
+    min-height: 500px;
+    padding: 48px 0 96px;
+  }
+
+  .hero-stage > div:last-child {
+    padding: 0 32px;
+  }
+
+  .hero-stage > div:last-child > div {
+    max-width: 400px;
+  }
+
+  .hero-stage h1 {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}

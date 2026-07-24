@@ -1,0 +1,88 @@
+{
+  "metadata": {
+    "projectType": "doc"
+  },
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.allianz.com/en.html"
+      ],
+      "representativeUrl": "https://www.allianz.com/en.html",
+      "coverageGaps": [],
+      "description": "Allianz corporate homepage with hero stage, three-column carousel, multi-column content sections, social feed integration, and footer",
+      "blocks": [
+        {
+          "name": "hero-stage",
+          "instances": [
+            ".stage.container .c-stage"
+          ]
+        },
+        {
+          "name": "carousel-teaser",
+          "instances": [
+            ".stage.container .carousel.container .js-carousel-three-column",
+            ".carousel.container .c-carousel__three-column"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            ".parsys .multi-column-grid:has(.c-iframe)",
+            ".parsys .multi-column-grid:has(.column.l-grid__column-large-8)"
+          ]
+        },
+        {
+          "name": "cards-stats",
+          "instances": [
+            ".parsys .multi-column-grid:has(.azcom-statistics)"
+          ]
+        },
+        {
+          "name": "embed-social",
+          "instances": [
+            ".parsys .flockler-integration"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "stage",
+          "name": "Stage",
+          "selector": "#onemarketing-main-wrapper > div.stage.container.aem-GridColumn.aem-GridColumn--default--12",
+          "style": null,
+          "blocks": [
+            "hero-stage",
+            "carousel-teaser"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "main",
+          "name": "Main",
+          "selector": "#onemarketing-main-wrapper > div.parsys.aem-GridColumn.aem-GridColumn--default--12",
+          "style": null,
+          "blocks": [
+            "columns-feature",
+            "cards-stats",
+            "embed-social"
+          ],
+          "defaultContent": [
+            ".parsys h2"
+          ]
+        },
+        {
+          "id": "find-us",
+          "name": "Find us in your market",
+          "selector": ".parsys .wrapper.container:nth-of-type(7) .c-wrapper.centeraligned",
+          "style": "dark",
+          "blocks": [],
+          "defaultContent": [
+            ".parsys .c-wrapper.centeraligned h2",
+            ".parsys .c-wrapper.centeraligned .button.parbase"
+          ]
+        }
+      ]
+    }
+  ]
+}

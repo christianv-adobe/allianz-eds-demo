@@ -1,0 +1,29 @@
+/*
+ * brand.css — Allianz design tokens
+ * Extracted from https://www.allianz.com/en.html (migration-work/brand.json)
+ * Brand font: Allianz Neo (self-hosted, see fonts.css)
+ * Signature color: Allianz Blue #003781
+ */
+
+:root {
+  /* fonts */
+  --heading-font-family: 'Allianz Neo', 'Allianz Neo Fallback', arial, sans-serif;
+  --body-font-family: 'Allianz Neo', 'Allianz Neo Fallback', arial, sans-serif;
+
+  /* brand colors */
+  --brand-blue: #003781;          /* Allianz signature blue */
+  --brand-blue-dark: #002d6b;     /* darker blue for hover */
+  --brand-blue-hover: #00549f;    /* lighter accent for hover on dark */
+  --background-color: #fff;
+  --light-color: #edf2f8;         /* light-blue section band (~#e8eef5) */
+  --dark-color: #003781;          /* dark/navy section = Allianz blue */
+  --text-color: #1e1e1e;          /* readable body text */
+  --heading-color: #003781;       /* headings in Allianz blue */
+  --link-color: #003781;
+  --link-hover-color: #002d6b;
+
+  /* spacing */
+  --nav-height: 90px;
+  --content-max-width: 1400px;
+  --section-padding: 48px;
+}
