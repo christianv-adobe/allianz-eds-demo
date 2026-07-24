@@ -13,6 +13,36 @@
   margin: 40px 0;
 }
 
+/* Insights & Specials / Careers feature rows sit on a continuous full-bleed
+   light-blue band with white content cards (matches the source). Scoped to the
+   2-column shape so the 3-column Investor Relations promo is unaffected. A
+   full-bleed ::before pseudo paints the band edge-to-edge without adding to the
+   page scroll width; zero margin makes adjacent bands merge into one band. */
+.columns-feature-2-cols {
+  position: relative;
+  margin: 0;
+  padding: 24px 0;
+}
+
+.columns-feature-2-cols::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: var(--light-color);
+}
+
+.columns-feature-2-cols > div {
+  position: relative;
+  background: var(--background-color);
+  padding: 24px;
+  border-radius: 4px;
+}
+
 .columns-feature > div {
   display: flex;
   flex-direction: column;
