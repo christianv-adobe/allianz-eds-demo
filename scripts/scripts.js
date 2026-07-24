@@ -195,7 +195,7 @@ function decorateLinkGroups(main) {
           run[0].before(group);
           run.forEach((p) => {
             const a = p.firstElementChild;
-            a.classList.add('button', 'secondary');
+            a.classList.add('button', 'primary');
             a.title = a.title || a.textContent;
             group.append(a);
             p.remove();

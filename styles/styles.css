@@ -279,6 +279,13 @@ button.button.accent:disabled:focus-visible {
   color: var(--dark-color);
 }
 
+/* topic pills: solid Allianz-blue with squared corners (matches source) */
+/* stylelint-disable-next-line no-descending-specificity */
+.default-content-wrapper .link-group a.button {
+  border-radius: 4px;
+  padding: 0.7em 1.6em;
+}
+
 main img {
   max-width: 100%;
   width: auto;
