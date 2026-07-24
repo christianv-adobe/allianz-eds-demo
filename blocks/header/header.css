@@ -326,7 +326,6 @@ header .nav-tools .nav-contacts:hover {
   header .nav-brand {
     grid-area: brand;
     align-self: center;
-    grid-row: 1 / span 2;
   }
 
   header .nav-brand img {
