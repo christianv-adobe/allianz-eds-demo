@@ -26,9 +26,12 @@ function iconFor(href, label) {
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  // load footer as fragment — dual fetch for local + DA/EDS
+  // load footer as fragment. The content/ folder maps to the site root when
+  // published, so the fragment lives at /footer (root). Locally, aem up serves
+  // it at both /footer and /content/footer. Prefer the root path (works
+  // everywhere) and fall back to /content/footer for content-prefixed setups.
   const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/content/footer';
+  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
   let fragment = await loadFragment(footerPath);
   if (!fragment || !fragment.firstElementChild) {
     fragment = await loadFragment('/content/footer');

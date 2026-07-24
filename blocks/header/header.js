@@ -83,9 +83,12 @@ function decorateDropdown(navSection, navSections) {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
-  // load nav as fragment — dual fetch for local + DA/EDS
+  // load nav as fragment. The content/ folder maps to the site root when
+  // published, so the fragment lives at /nav (root). Locally, aem up serves it
+  // at both /nav and /content/nav. Prefer the root path (works everywhere) and
+  // fall back to /content/nav for setups that keep the content prefix.
   const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/content/nav';
+  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
   let fragment = await loadFragment(navPath);
   if (!fragment || !fragment.firstElementChild) {
     fragment = await loadFragment('/content/nav');
