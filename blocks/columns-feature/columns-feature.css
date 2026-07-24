@@ -6,6 +6,13 @@
  */
 
 /* ---------- base (mobile: stacked) ---------- */
+
+/* vertical rhythm: each feature row / promo is separated from its neighbours
+   (the block wrappers carry no margin, so add it on the block itself) */
+.columns-feature {
+  margin: 40px 0;
+}
+
 .columns-feature > div {
   display: flex;
   flex-direction: column;
