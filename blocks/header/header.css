@@ -312,7 +312,7 @@ header .nav-tools .nav-contacts:hover {
     display: grid;
     grid-template:
       'brand tools' auto
-      'brand sections' auto / auto 1fr;
+      'sections sections' auto / auto 1fr;
     gap: 6px 24px;
     padding: 8px 32px;
   }
@@ -326,6 +326,7 @@ header .nav-tools .nav-contacts:hover {
   header .nav-brand {
     grid-area: brand;
     align-self: center;
+    grid-row: 1 / span 2;
   }
 
   header .nav-brand img {
@@ -350,10 +351,13 @@ header .nav-tools .nav-contacts:hover {
     padding: 0.4em 1.1em;
   }
 
-  /* primary nav row: horizontal */
+  /* primary nav row: horizontal, with a full-width divider above it */
   header .nav-sections {
     grid-area: sections;
     justify-self: stretch;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid #e6ebf2;
   }
 
   header .nav-sections > div > ul {
