@@ -28,27 +28,30 @@ footer .footer a:hover {
 
 /* ---------- Band 1: link columns (light-blue) ---------- */
 footer .footer-columns {
+  background-color: var(--light-color);
+}
+
+footer .footer-columns-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 32px;
   max-width: var(--content-max-width);
   margin: 0 auto;
   padding: 40px 24px;
-  background-color: var(--light-color);
 }
 
-footer .footer-columns > div h2 {
+footer .footer-column h2 {
   margin: 0 0 16px;
   color: var(--brand-blue);
   font-size: 18px;
   font-weight: 600;
 }
 
-footer .footer-columns > div li {
+footer .footer-column li {
   margin: 0 0 12px;
 }
 
-footer .footer-columns > div a {
+footer .footer-column a {
   font-size: 15px;
 }
 
@@ -123,14 +126,14 @@ footer .footer-legal a {
 
 /* ============ Tablet (>= 600px) ============ */
 @media (width >= 600px) {
-  footer .footer-columns {
+  footer .footer-columns-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* ============ Desktop (>= 900px) ============ */
 @media (width >= 900px) {
-  footer .footer-columns {
+  footer .footer-columns-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
     padding: 48px 32px;

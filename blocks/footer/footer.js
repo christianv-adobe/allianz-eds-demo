@@ -45,7 +45,26 @@ export default async function decorate(block) {
   const sections = [...footer.children];
   const [columnsSection, socialSection, legalSection] = sections;
 
-  if (columnsSection) columnsSection.classList.add('footer-columns');
+  // Columns: EDS flattens the authored <div><h2><ul></div> groups into a flat
+  // sequence of h2/ul inside a .default-content-wrapper. Re-group each heading
+  // with its following list into a column so the CSS grid has real column items.
+  if (columnsSection) {
+    columnsSection.classList.add('footer-columns');
+    const wrapper = columnsSection.querySelector('.default-content-wrapper') || columnsSection;
+    const grid = document.createElement('div');
+    grid.className = 'footer-columns-grid';
+    let currentCol = null;
+    [...wrapper.children].forEach((el) => {
+      if (el.tagName === 'H2') {
+        currentCol = document.createElement('div');
+        currentCol.className = 'footer-column';
+        grid.append(currentCol);
+      }
+      if (currentCol) currentCol.append(el);
+      else grid.append(el);
+    });
+    wrapper.append(grid);
+  }
 
   // Social: turn the link list into icon buttons
   if (socialSection) {
