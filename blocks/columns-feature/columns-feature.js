@@ -65,4 +65,34 @@ export default function decorate(block) {
       panelIdx += 1;
     });
   }
+
+  // 2-column feature rows sit on a light-blue band. If a lone heading (e.g.
+  // "Insights & Specials") directly precedes the FIRST such row, pull it onto
+  // the same band. The heading may share its wrapper with a preceding pill row,
+  // which is split off into its own white wrapper so only the heading is banded.
+  if (cols.length === 2) {
+    const wrapper = block.closest('.columns-feature-wrapper');
+    const prev = wrapper && wrapper.previousElementSibling;
+    const alreadyBanded = prev && prev.previousElementSibling
+      && prev.previousElementSibling.classList.contains('content-band');
+    if (
+      prev
+      && prev.classList.contains('default-content-wrapper')
+      && !prev.classList.contains('content-band')
+      && !alreadyBanded
+    ) {
+      const heading = prev.querySelector(':scope > h2, :scope > h3');
+      const kids = [...prev.children];
+      const pills = prev.querySelector(':scope > .link-group');
+      if (heading) {
+        if (pills && kids.indexOf(pills) < kids.indexOf(heading)) {
+          const pillsWrapper = document.createElement('div');
+          pillsWrapper.className = 'default-content-wrapper';
+          prev.before(pillsWrapper);
+          pillsWrapper.append(pills);
+        }
+        prev.classList.add('content-band');
+      }
+    }
+  }
 }

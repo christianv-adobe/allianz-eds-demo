@@ -341,3 +341,26 @@ main .section.dark h6,
 main .section.dark a:any-link {
   color: #fff;
 }
+
+/* content band: a section heading pulled onto the same full-bleed light-blue
+   band as the feature rows that follow it (e.g. "Insights & Specials"). The
+   ::before paints edge-to-edge without adding page scroll width; bottom margin
+   is removed so it joins the feature band directly below. */
+main .section > .content-band {
+  position: relative;
+  margin-bottom: 0;
+  padding-top: 40px;
+  padding-bottom: 8px;
+}
+
+main .section > .content-band::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: var(--light-color);
+}
